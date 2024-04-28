@@ -1,0 +1,24 @@
+
+.auth-container {
+    background-image: url(src/assets/images/ella-olsson-C1Q3qOTlegg-unsplash 1.png);
+}
+.bg-overlay {
+    background: linear-gradient(rgb(47,140,96,0.4), rgb(0,0,0,0.7));
+}
+
+.logo {
+    width: 40%;
+}
+p {
+   color: #49494999;
+   font-size: 16px;
+}
+h1,h3 {
+    color:#494949;
+    font-size: 25px;
+}
+.forgetpass {
+color: #4AA35A;
+font-size: 16px;
+text-decoration: none;
+}
