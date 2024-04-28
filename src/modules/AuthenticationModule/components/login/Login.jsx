@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 
-export default function Login() {
+export default function Login({saveLoginData}) {
   const navigate = useNavigate()
   let {
     register,
@@ -23,6 +23,7 @@ export default function Login() {
     try {
       let respone = await axios.post("https://upskilling-egypt.com:3006/api/v1/Users/Login", data);
       localStorage.setItem("token",respone.data.token)
+      saveLoginData()
         toast.success('login successfully')
         navigate('/dashborad')
       // }
