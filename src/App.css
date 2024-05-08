@@ -1,24 +1,71 @@
-
 .auth-container {
     background-image: url(src/assets/images/ella-olsson-C1Q3qOTlegg-unsplash 1.png);
 }
+
 .bg-overlay {
-    background: linear-gradient(rgb(47,140,96,0.4), rgb(0,0,0,0.7));
+    background: linear-gradient(rgb(47, 140, 96, 0.4), rgb(0, 0, 0, 0.7));
 }
 
 .logo {
     width: 40%;
 }
+
 p {
-   color: #49494999;
-   font-size: 16px;
+    color: #49494999;
+    font-size: 16px;
 }
-h1,h3 {
-    color:#494949;
+
+h1,
+h3 {
+    color: #494949;
     font-size: 25px;
 }
+
 .forgetpass {
-color: #4AA35A;
-font-size: 16px;
-text-decoration: none;
+    color: #4AA35A;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.Sidebar-conatiner {
+    /* background: #1F263E; */
+    height: 100vh;
+}
+.image-sidebar {
+    /* width: 100%;
+    text-align: start; */
+}
+
+.Sidebar-conatiner .ps-sidebar-container {
+    background: #1F263E;
+    color:#fff;
+    height: 100vh;
+    border-top-right-radius: 90px;
+  
+}
+.Sidebar-conatiner .ps-sidebar-container .ps-menu-button {
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.Sidebar-conatiner .ps-sidebar-container .ps-menu-button:hover {
+    background-color:rgb(47, 140, 96, 0.4);
+}
+.container-navbar {
+    max-width: 100%;
+}
+.container-header {
+    background-image: url(/src/assets/images/Rectangle.png);
+    background-size: cover;
+    color: #fff;
+}
+.add-new-Category {
+    background: #009247;
+    font-style: 10px;
+    border: none;
+    color:#fff;
+    width: 50%;
+    height: 60px;
+    border-radius: 8px;
+
 }

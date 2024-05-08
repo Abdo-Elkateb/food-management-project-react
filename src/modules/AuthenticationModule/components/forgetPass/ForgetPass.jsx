@@ -19,7 +19,6 @@ export default function ForgetPass() {
       let respone = await axios.post("https://upskilling-egypt.com:3006/api/v1/Users/Reset/Request", data);
         toast.success('Your request is being processed, please check your email')
         navigate('/restpass')
-      // }
 
 
     }

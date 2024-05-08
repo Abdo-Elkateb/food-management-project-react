@@ -13,24 +13,9 @@ import ForgetPass from "./modules/AuthenticationModule/components/forgetPass/For
 import RestPass from "./modules/AuthenticationModule/components/resetPass/RestPass";
 import Login from "./modules/AuthenticationModule/components/login/Login";
 import { ToastContainer } from 'react-toastify';
-import { useEffect, useState } from "react";
-import { get } from "react-hook-form";
-import { jwtDecode } from "jwt-decode";
+import MyContextProvider from './modules/contextApi/MyContext'
 
 function App() {
-  const [loginData, setLoginData] = useState(null)
-  let saveLoginData = ()=> {
-    let encodedToken = localStorage.getItem("token")
-    let decodedToken = jwtDecode(encodedToken)
-    setLoginData(decodedToken)
-
-  }
-  useEffect(()=> {
-    if(localStorage.getItem("token")) {
-      saveLoginData()
-    }
-
-  }, [])
   let routes = createBrowserRouter([
     {
       path: "dashborad",
@@ -61,11 +46,11 @@ function App() {
       errorElement: <NotFound />,
       children: [
         {
-          index: true, element: <Login saveLoginData={saveLoginData} />
+          index: true, element: <Login />
         },
         {
           path: "login",
-          element: <Login aveLoginData={saveLoginData} />
+          element: <Login />
         },
         {
           path: "register",
@@ -88,8 +73,11 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
+    <ToastContainer />
+    <MyContextProvider>
       <RouterProvider router={routes}></RouterProvider>
+    </MyContextProvider>
+
     </>
 
   )

@@ -1,4 +1,4 @@
-import React from "react";
+
 import logo from "/src/assets/images/4 4.svg";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import { useMyContext } from "../../../contextApi/MyContext";
 
 
-export default function Login({saveLoginData}) {
+export default function Login() {
+      const { saveLoginData } = useMyContext();
   const navigate = useNavigate()
   let {
     register,
@@ -23,6 +25,7 @@ export default function Login({saveLoginData}) {
     try {
       let respone = await axios.post("https://upskilling-egypt.com:3006/api/v1/Users/Login", data);
       localStorage.setItem("token",respone.data.token)
+      // console.log(respone.data.token)
       saveLoginData()
         toast.success('login successfully')
         navigate('/dashborad')
@@ -81,7 +84,7 @@ export default function Login({saveLoginData}) {
                     type="text"
                     className="form-control"
                     id="floatingInputGroup1"
-                    placeholder="Enter your E-mail"
+                    placeholder="Enter your password"
                     {...register("password", {
                       required: "password is required",
                       pattern: {

@@ -1,4 +1,4 @@
-import React from "react";
+
 import logo from "/src/assets/images/4 4.svg";
 import { useForm } from "react-hook-form";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,24 +10,31 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function RestPass() {
-  const navigate = useNavigate()
+  let navigate = useNavigate()
   let {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
+    console.log(data)
     try {
-      let respone = await axios.post("https://upskilling-egypt.com:3006/api/v1/Users/Reset", data);
-       toast.success('Password has been updated successfully"')
+      let response = await axios.post("https://upskilling-egypt.com:3006/api/v1/Users/Reset", data);
+      toast.success('password rest successfu')
+      console.log(response)
       navigate('/login')
+
+
     }
     catch (error) {
       toast.error(error.response.data.message)
+
     }
 
 
   };
+
+
   return (
 
     <div className="auth-container">
@@ -67,21 +74,22 @@ export default function RestPass() {
                   <FontAwesomeIcon icon={faLock} />
                 </span>
 
+                {/* seed */}
+
                 <input
                   type="text"
                   className="form-control"
                   placeholder="OTP"
                   {...register("seed", {
                     required: "OTP is required",
-                    pattern: {
-                      message: "Invlid seed"
-                    }
+
                   })}
                 />
               </div>
-              {errors.password && (
-                <p className="alert alert-danger">{errors.password.message} </p>
+              {errors.seed && (
+                <p className="alert alert-danger">{errors.seed.message} </p>
               )}
+              {/*  password*/}
               <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-ddon1">
                   <FontAwesomeIcon icon={faLock} />
@@ -90,16 +98,22 @@ export default function RestPass() {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="New Password"
+                  id="floatingInputGroup1"
+                  placeholder="Enter your password"
                   {...register("password", {
                     required: "password is required",
                     pattern: {
-                      message: "Invlid Password"
-                    }
+                      message: "Invlid password",
+                    },
                   })}
                 />
               </div>
 
+              {errors.password && (
+                <p className="alert alert-danger">{errors.password.message} </p>
+              )}
+
+              {/* confirmPassword */}
               <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-ddon1">
                   <FontAwesomeIcon icon={faLock} />
@@ -108,15 +122,21 @@ export default function RestPass() {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Confirm New Password"
+                  id="floatingInputGroup1"
+                  placeholder="Enter your confirmPassword"
                   {...register("confirmPassword", {
                     required: "confirmPassword is required",
                     pattern: {
-                      message: "Invlid confirmPassword"
-                    }
+                      message: "Invlid confirmPassword",
+                    },
                   })}
                 />
               </div>
+              {errors.confirmPassword && (
+                <p className="alert alert-danger">{errors.confirmPassword.message} </p>
+              )}
+
+
 
 
               <div className="login p-3">
@@ -131,4 +151,3 @@ export default function RestPass() {
     </div>
   );
 }
-
